@@ -54,3 +54,7 @@ MQL5/Experts/AfriAdaptiveStraddleEA/
 
 - MT5 mobile apps do **not** run EAs; use the desktop terminal or a VPS for live execution.
 
+
+- MT5 mobile apps do **not** run EAs; use the desktop terminal or a VPS for live execution.
+
+

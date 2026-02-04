@@ -3,7 +3,9 @@
 //|                        Adaptive breakout straddle (non-gambling) |
 //+------------------------------------------------------------------+
 #property copyright ""
+
 #property version   "1.0.0"
+
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -182,6 +184,12 @@ SymbolCategory ClassifySymbol(const string symbol, string &method)
    string profit = SymbolInfoString(symbol, SYMBOL_CURRENCY_PROFIT);
    string path = SymbolInfoString(symbol, SYMBOL_PATH);
    long calc_mode = SymbolInfoInteger(symbol, SYMBOL_TRADE_CALC_MODE);
+
+
+   string name_upper = symbol;
+   string path_upper = path;
+   StringToUpper(name_upper);
+   StringToUpper(path_upper);
 
 
    string name_upper = StringToUpper(symbol);
@@ -613,7 +621,11 @@ void EvaluateSymbol(SymbolState &state)
 
    double spread_points = (double)SymbolInfoInteger(symbol, SYMBOL_SPREAD);
 
+
+   double spread_points = (double)SymbolInfoInteger(symbol, SYMBOL_SPREAD);
+
    double spread_points = SymbolInfoInteger(symbol, SYMBOL_SPREAD);
+
 
    double range_points = (range_high - range_low) / point;
    double tf_multiplier = MathSqrt((double)PeriodSeconds(signal_tf) / 900.0);
@@ -831,7 +843,11 @@ void OnTick()
 
             double spread_points = (double)SymbolInfoInteger(states[i].symbol, SYMBOL_SPREAD);
 
+
+            double spread_points = (double)SymbolInfoInteger(states[i].symbol, SYMBOL_SPREAD);
+
             double spread_points = SymbolInfoInteger(states[i].symbol, SYMBOL_SPREAD);
+
 
             int handle = iATR(states[i].symbol, signal_tf, atr_period);
             if(handle != INVALID_HANDLE)
