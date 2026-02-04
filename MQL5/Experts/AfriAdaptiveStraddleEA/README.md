@@ -51,4 +51,6 @@ MQL5/Experts/AfriAdaptiveStraddleEA/
 - The EA **never trades** in sanity mode.
 - The OCO logic is handled in `OnTradeTransaction`.
 - Spread spikes can cancel pending orders to prevent bad fills.
+
 - MT5 mobile apps do **not** run EAs; use the desktop terminal or a VPS for live execution.
+

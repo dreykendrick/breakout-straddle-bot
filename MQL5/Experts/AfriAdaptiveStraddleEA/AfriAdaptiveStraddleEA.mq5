@@ -183,8 +183,13 @@ SymbolCategory ClassifySymbol(const string symbol, string &method)
    string path = SymbolInfoString(symbol, SYMBOL_PATH);
    long calc_mode = SymbolInfoInteger(symbol, SYMBOL_TRADE_CALC_MODE);
 
+
    string name_upper = StringToUpper(symbol);
    string path_upper = StringToUpper(path);
+
+   string name_upper = StringUpper(symbol);
+   string path_upper = StringUpper(path);
+
 
    if(StringFind(path_upper, "FOREX") >= 0 || (StringLen(base) == 3 && StringLen(profit) == 3))
      {
@@ -605,7 +610,11 @@ void EvaluateSymbol(SymbolState &state)
 
    double point = SymbolInfoDouble(symbol, SYMBOL_POINT);
    double atr_points = atr / point;
+
    double spread_points = (double)SymbolInfoInteger(symbol, SYMBOL_SPREAD);
+
+   double spread_points = SymbolInfoInteger(symbol, SYMBOL_SPREAD);
+
    double range_points = (range_high - range_low) / point;
    double tf_multiplier = MathSqrt((double)PeriodSeconds(signal_tf) / 900.0);
 
@@ -819,7 +828,11 @@ void OnTick()
         {
          if(HasPendingOrders(states[i].symbol, states[i].magic))
            {
+
             double spread_points = (double)SymbolInfoInteger(states[i].symbol, SYMBOL_SPREAD);
+
+            double spread_points = SymbolInfoInteger(states[i].symbol, SYMBOL_SPREAD);
+
             int handle = iATR(states[i].symbol, signal_tf, atr_period);
             if(handle != INVALID_HANDLE)
               {
